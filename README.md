@@ -1,7 +1,6 @@
 # My UV Package Creator
 
 A simple Python CLI tool that lets you create a new package/project directory directly from the Linux terminal using a single command.
-
 After installation, you can run:
 
 ```bash
@@ -11,7 +10,15 @@ create my_project
 and it will create:
 
 ```text
-./my_project
+.
+└── my_project/
+	├── LICENSE
+	├── pyproject.toml
+	├── project.toml
+	└── src/
+		└── my_project/
+			├── __init__.py
+			└── cli.py
 ```
 
 in your current working directory.
@@ -21,17 +28,20 @@ in your current working directory.
 # Features
 
 - Simple terminal command
-- Creates folders instantly
+- Creates a full UV package scaffold instantly
 - Works from any directory
 - Built with Python
 - Uses modern `uv` package management
 - Supports editable development installs
+- Generates `pyproject.toml`, `project.toml`, and `LICENSE`
+- Creates `src/<package_name>/__init__.py` and `src/<package_name>/cli.py`
+- Pulls Apache 2.0 license text automatically (with local fallback)
 
 ---
 
 # Requirements
 
-- Python 3.9+
+- Python 3.12+
 - Linux/macOS
 - `uv` installed (recommended)
 
@@ -50,12 +60,6 @@ Install `uv`:
 curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-Verify installation:
-
-```bash
-uv --version
-```
-
 ---
 
 # Project Setup
@@ -63,7 +67,7 @@ uv --version
 Clone the repository:
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/athmanar/my-uvpackage-creator.git
 cd my-uvpackage-creator
 ```
 
@@ -74,9 +78,6 @@ cd my-uvpackage-creator
 ```bash
 uv venv
 ```
-
-
-## Linux / macOS
 
 ```bash
 source .venv/bin/activate
@@ -136,6 +137,10 @@ Creates:
 
 ```text
 ~/Desktop/projects/test_package
+├── LICENSE
+├── pyproject.toml
+├── project.toml
+└── src/test_package/
 ```
 
 ---
@@ -149,12 +154,6 @@ cd demo
 create my_library
 ```
 
-Result:
-
-```text
-demo/
-└── my_library/
-```
 
 ---
 
@@ -163,25 +162,8 @@ demo/
 ## Run locally
 
 ```bash
-python -m my_uvpackage_creator.cli my_project
+python -m my_project_creator.cli my_project
 ```
-
----
-
-# Editable Development Mode
-
-Recommended for contributors:
-
-```bash
-pip install -e .
-```
-
-or
-
-```bash
-uv sync
-```
-
 ---
 
 
@@ -192,8 +174,7 @@ uv sync
 - Add template support
 - Create README automatically
 - Git initialization
-- License generation
-- pyproject.toml scaffolding
+- Add test scaffolding
 
 # Author
 
