@@ -75,15 +75,6 @@ cd my-uvpackage-creator
 uv venv
 ```
 
-This creates:
-
-```text
-.venv/
-```
-
----
-
-# Activate Virtual Environment
 
 ## Linux / macOS
 
@@ -111,17 +102,12 @@ If you prefer using `pip` instead of `uv`:
 pip install -e .
 ```
 
-The `-e` flag installs the package in editable/development mode.
-
-This means:
-- code changes update immediately
-- no reinstall required after edits
 
 ---
 
 # Usage
 
-Once installed, you can create a directory from anywhere in the terminal.
+Once installed, you can create project directory from anywhere in the terminal.
 
 ## Syntax
 
@@ -135,21 +121,6 @@ or
 create package_name
 ```
 
----
-
-# Examples
-
-## Create a package folder
-
-```bash
-create my_app
-```
-
-Creates:
-
-```text
-./my_app
-```
 
 ---
 
@@ -213,100 +184,7 @@ uv sync
 
 ---
 
-# Project Structure
 
-```text
-my-uvpackage-creator/
-├── pyproject.toml
-├── README.md
-├── my_uvpackage_creator/
-│   ├── __init__.py
-│   └── cli.py
-└── .venv/
-```
-
----
-
-# How It Works
-
-The package exposes a terminal command using Python entry points.
-
-In `pyproject.toml`:
-
-```toml
-[project.scripts]
-create = "my_uvpackage_creator.cli:main"
-```
-
-This maps:
-
-```bash
-create
-```
-
-to:
-
-```python
-main()
-```
-
-inside:
-
-```text
-my_uvpackage_creator/cli.py
-```
-
----
-
-# Troubleshooting
-
-## Command not found: create
-
-Ensure the package is installed:
-
-```bash
-pip install -e .
-```
-
-or
-
-```bash
-uv sync
-```
-
-Then restart the terminal.
-
----
-
-## Virtual environment not activated
-
-Activate it manually:
-
-```bash
-source .venv/bin/activate
-```
-
----
-
-## Permission denied
-
-Ensure Python and uv are installed correctly.
-
-You may also need:
-
-```bash
-chmod +x <script>
-```
-
----
-
-# Uninstall
-
-```bash
-pip uninstall my-uvpackage-creator
-```
-
----
 
 # Future Improvements
 
@@ -316,14 +194,6 @@ pip uninstall my-uvpackage-creator
 - Git initialization
 - License generation
 - pyproject.toml scaffolding
-
----
-
-# License
-
-MIT License
-
----
 
 # Author
 
